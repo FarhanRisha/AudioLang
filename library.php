@@ -71,7 +71,7 @@ $audio_records = $stmt->fetchAll();
             <option value="4" <?= $genre_id == '4' ? 'selected' : '' ?>>Hip-Hop</option>
             <option value="5" <?= $genre_id == '5' ? 'selected' : '' ?>>Jazz</option>
             <option value="6" <?= $genre_id == '6' ? 'selected' : '' ?>>Electronic</option>
-            <option value="7" <?= $genre_id == '7' ? 'selected' : '' ?>>kkkR&B</option>
+            <option value="7" <?= $genre_id == '7' ? 'selected' : '' ?>>R&B</option>
           </select></div>
         <div class="tm-field" style="flex:0 0 160px; justify-content:flex-end;">
           <button type="submit" class="btn btn-primary">Apply Filters</button>
