@@ -2,7 +2,7 @@
 require_once 'db.php';
 $audio_id = isset($_GET['id']) ? intval($_GET['id']) : 1;
 
-$sql = "SELECT A.*, L.language_name, G.genre_name, T.transcript_text, F.tempo, F.pitch, F.rhythm, F.waveform_feature, F.spectrogram_feature, U.name as user_name
+$sql = "SELECT A.*, L.language_name, G.genre_name, T.transcript_text, F.tempo, F.pitch, F.rhythm, F.waveform_feature, F.spectrogram_feature, U.full_name
         FROM AUDIO A
         LEFT JOIN LANGUAGE L ON A.languange_id = L.language_id
         LEFT JOIN GENRE G ON A.genre_id = G.genre_id
@@ -34,6 +34,7 @@ if (!$audio) { die("Error: Record row reference target not found."); }
       <li><a href="library.php" class="active">Library</a></li>
       <li><a href="search.php">Search</a></li>
       <li><a href="similar.php">Similar</a></li>
+      <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
     </ul>
   </div>
 </header>
@@ -82,7 +83,7 @@ if (!$audio) { die("Error: Record row reference target not found."); }
           <dt>File Type</dt><dd><?= htmlspecialchars($audio['file_type']) ?></dd>
           <dt>File Size</dt><dd><?= htmlspecialchars($audio['file_size']) ?></dd>
           <dt>Upload Date</dt><dd><?= htmlspecialchars($audio['date_upload']) ?></dd>
-          <dt>Uploaded By</dt><dd><?= htmlspecialchars($audio['user_name'] ?? 'System Ingestion Bot') ?></dd>
+          <dt>Uploaded By</dt><dd><?= htmlspecialchars($audio['full_name'] ?? 'System Ingestion Bot') ?></dd>
         </dl>
       </div>
     </div>

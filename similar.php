@@ -48,6 +48,7 @@ if ($ref_track) {
       <li><a href="library.php">Library</a></li>
       <li><a href="search.php">Search</a></li>
       <li><a href="similar.php" class="active">Similar</a></li>
+      <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
     </ul>
   </div>
 </header>

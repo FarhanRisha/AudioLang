@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
 require_once 'db.php';
 
 $file_type = $_GET['file_type'] ?? 'All';
@@ -39,6 +44,7 @@ $audio_records = $stmt->fetchAll();
       <li><a href="library.php" class="active">Library</a></li>
       <li><a href="search.php">Search</a></li>
       <li><a href="similar.php">Similar</a></li>
+      <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
     </ul>
   </div>
 </header>

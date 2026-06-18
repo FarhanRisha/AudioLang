@@ -31,6 +31,7 @@ if ($keyword !== '') {
       <li><a href="library.php">Library</a></li>
       <li><a href="search.php" class="active">Search</a></li>
       <li><a href="similar.php">Similar</a></li>
+      <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
     </ul>
   </div>
 </header>

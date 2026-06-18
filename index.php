@@ -1,5 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
 require_once 'db.php';
+
 $stmt = $pdo->query("SELECT A.*, L.language_name, G.genre_name FROM AUDIO A 
                      LEFT JOIN LANGUAGE L ON A.languange_id = L.language_id 
                      LEFT JOIN GENRE G ON A.genre_id = G.genre_id 
@@ -26,6 +32,7 @@ $recent_uploads = $stmt->fetchAll();
       <li><a href="library.php">Library</a></li>
       <li><a href="search.php">Search</a></li>
       <li><a href="similar.php">Similar</a></li>
+      <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
     </ul>
   </div>
 </header>
