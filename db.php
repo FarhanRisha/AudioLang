@@ -1,8 +1,8 @@
 <?php
-$host = '127.0.0.1';
-$db   = 'audiolang_db';
-$user = 'root'; 
-$pass = '';     
+$host = 'localhost';
+$db   = 'gs04';
+$user = 'GS04'; 
+$pass = 'gs04';     
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

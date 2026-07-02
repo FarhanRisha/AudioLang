@@ -6,13 +6,12 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $matric_no = trim($_POST['matric_no']);
-    $phone_no = trim($_POST['phone_no']);
+    $password = trim($_POST['password']);
 
-    if (!empty($matric_no) && !empty($phone_no)) {
+    if (!empty($matric_no) && !empty($password)) {
         try {
-            // Check your updated database schema names directly
-            $stmt = $pdo->prepare("SELECT * FROM user WHERE matric_no = :matric AND phone_no = :phone LIMIT 1");
-            $stmt->execute([':matric' => $matric_no, ':phone' => $phone_no]);
+            $stmt = $pdo->prepare("SELECT * FROM user WHERE matric_no = :matric AND password = :pass LIMIT 1");
+            $stmt->execute([':matric' => $matric_no, ':pass' => $password]);
             $user = $stmt->fetch();
 
             if ($user) {
@@ -23,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: index.php");
                 exit();
             } else {
-                $error = "Invalid Matric Number or Phone Number configuration mismatch.";
+                $error = "Invalid Matric Number or Password.";
             }
         } catch (Exception $e) {
             $error = "System Authentication Error: " . $e->getMessage();
@@ -69,14 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" name="matric_no" placeholder="Matric Number" required>
         </div>
         <div class="input-group">
-            <input type="password" name="phone_no" placeholder="Phone Number (Password)" required>
+            <input type="password" name="password" placeholder="Password" required>
         </div>
         <button type="submit" class="btn-login">Login</button>
     </form>
 
-    <div class="nav-link">
-        <a href="register.php">Don't have an account? Register here</a>
-    </div>
+
 </div>
 
 </body>
